@@ -14,7 +14,6 @@ jobs:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
       
     steps:
-      - name: Print Payload Values
       - uses: actions/checkout@v1
       - run: 'echo "field: ${{ github.event.client_payload.foo }}"'
       - run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
