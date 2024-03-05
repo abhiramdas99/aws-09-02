@@ -1,0 +1,20 @@
+on:
+  repository_dispatch:
+
+env:
+  branch_name: ${{ github.head_ref || github.ref_name }}
+  webflow_query: ${{ github.event.client_payload.webflow_query }}
+  
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name : print-payload
+      run: echo "print webflowQuery ${{env.webflow_query}}"
+
+      
+
+      
+      
+         
+  
