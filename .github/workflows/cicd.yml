@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-      ###webflow_query: ${{ github.event.client_payload.webflow_query }}
+      webflow_query: ${{ github.event.client_payload.webflow_query }}
       
     steps:
       - name : print-payload
-      - run: echo "sdsfsds"
+        run: echo env.webflow_query
           
       - name: my-step
         run: echo "Hello World!${{github.ref}}"
