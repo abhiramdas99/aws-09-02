@@ -16,8 +16,7 @@ jobs:
     steps:
       - name: Print Payload Values
         run: |
-          echo "Key: ${{ github.event.client_payload.abhi }}"
-          echo "Value: ${{ github.event.client_payload.value }}"
+          echo "field: ${{ github.event.client_payload.foo }}"
           
       - name: my-step
         run: echo "Hello World!${{github.ref}}"
