@@ -2,21 +2,23 @@ name: hello-world
 on: 
   push:  
     branches: [development,staging,main]
+
     
   workflow_dispatch:
   
   repository_dispatch:
+    
   
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+      webflow_query: ${{ github.event.client_payload.webflow_query }}
       
     steps:
-      - uses: actions/checkout@v1
-      - run: 'echo "field: ${{ github.event.client_payload.abhi }}"'
-      - run: 'echo "payload: ${{ toJson(github.event.client_payload) }}"'
+      - name : print-payload
+      - run: echo env.webflow_query
           
       - name: my-step
-        run: echo "Hello World!${{github.ref}}"
+        run: echo "Hello World!${{github.ref}}  "
