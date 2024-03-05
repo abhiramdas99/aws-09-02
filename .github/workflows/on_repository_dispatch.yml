@@ -2,17 +2,19 @@ on:
   repository_dispatch:
 
 env:
-  branch_name: ${{ github.head_ref || github.ref_name }}
-  webflow_query: ${{ github.event.client_payload.webflow_query }}
+  webflow_env: ${{ github.event.client_payload.webflow_env }}
   
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-    - name : print-payload
+    - name : print-webflowQuery
       run: echo "print webflowQuery ${{env.webflow_query}}"
 
-      
+    - name: Configuration For Development Branch
+      if: ${{ webflow_env == 'development' }}
+      run: |
+            echo "SLACK_CHANNEL=" >> $GITHUB_ENV 
 
       
       
