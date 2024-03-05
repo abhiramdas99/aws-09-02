@@ -14,5 +14,10 @@ jobs:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
       
     steps:
+      - name: Print Payload Values
+        run: |
+          echo "Key: ${{ github.event.client_payload.key }}"
+          echo "Value: ${{ github.event.client_payload.value }}"
+          
       - name: my-step
         run: echo "Hello World!${{github.ref}}"
